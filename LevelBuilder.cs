@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class LevelBuilder : MonoBehaviour {
 
@@ -49,7 +50,8 @@ public class LevelBuilder : MonoBehaviour {
 
 	private void SpawnObjectAt(Color32 c, int x, int y) {
 		if(c.Equals(groundColor) || c.Equals(rampColor)) {
-			GameObject go = Instantiate(groundPrefab, new Vector3(x * 2, 0, y * 2), Quaternion.identity);
+			GameObject go = PrefabUtility.InstantiatePrefab(groundPrefab) as GameObject;
+			go.transform.position = new Vector3(x * 2, 0, y * 2);
 			go.transform.SetParent(transform);
 		} else if(c.Equals(wallColor) || c.Equals(highGroundColor)) {
 			int type = 0;
@@ -112,33 +114,33 @@ public class LevelBuilder : MonoBehaviour {
 			if(wallPrefab == null)
 				return;
 
-			GameObject go = Instantiate(wallPrefab, new Vector3(x * 2, 0, y * 2), Quaternion.identity);
-			// Maybe rotate the prefab, or make all of them
+			GameObject go = PrefabUtility.InstantiatePrefab(wallPrefab) as GameObject;
+			go.transform.position = new Vector3(x * 2, 0, y * 2);
 			go.transform.SetParent(transform);
 			go.transform.Rotate(rotation);
 
 			// Now we just need to Place the edges
 			if((type == 3 || type == 7 || type == 11 || type == 15) && (!wallColor.Equals(allPixels[x + 1 + (y + 1) * width]) && !highGroundColor.Equals(allPixels[x + 1 + (y + 1) * width]))) {
-				GameObject edge = Instantiate(wallPrefabs.edgePrefab, new Vector3(x * 2, 0, y * 2), Quaternion.identity);
-				// Maybe rotate the prefab, or make all of them
+				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
+			go.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 90f, 0f);
 			}
 			if((type == 6 || type == 7 || type == 14 || type == 15) && (!wallColor.Equals(allPixels[x + 1 + (y - 1) * width]) && !highGroundColor.Equals(allPixels[x + 1 + (y - 1) * width]))) {
-				GameObject edge = Instantiate(wallPrefabs.edgePrefab, new Vector3(x * 2, 0, y * 2), Quaternion.identity);
-				// Maybe rotate the prefab, or make all of them
+				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
+			go.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 180f, 0f);
 			}
 			if((type == 12 || type == 13 || type == 14 || type == 15) && (!wallColor.Equals(allPixels[x - 1 + (y - 1) * width]) && !highGroundColor.Equals(allPixels[x - 1 + (y - 1) * width]))) {
-				GameObject edge = Instantiate(wallPrefabs.edgePrefab, new Vector3(x * 2, 0, y * 2), Quaternion.identity);
-				// Maybe rotate the prefab, or make all of them
+				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
+			go.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, -90f, 0f);
 			}
 			if((type == 9 || type == 11 || type == 13 || type == 15) && (!wallColor.Equals(allPixels[x - 1 + (y + 1) * width]) && !highGroundColor.Equals(allPixels[x - 1 + (y + 1) * width]))) {
-				GameObject edge = Instantiate(wallPrefabs.edgePrefab, new Vector3(x * 2, 0, y * 2), Quaternion.identity);
-				// Maybe rotate the prefab, or make all of them
+				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
+			go.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 0f, 0f);
 			}
@@ -206,33 +208,33 @@ public class LevelBuilder : MonoBehaviour {
 			if(highGroundPrefab == null)
 				return;
 
-			GameObject go = Instantiate(highGroundPrefab, new Vector3(x * 2, 2.5f, y * 2), Quaternion.identity);
-			// Maybe rotate the prefab, or make all of them
+			GameObject go = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
+			go.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 			go.transform.SetParent(transform);
 			go.transform.Rotate(rotation);
 
 			// Now we just need to Place the edges
 			if((type == 3 || type == 7 || type == 11 || type == 15) && !highGroundColor.Equals(allPixels[x + 1 + (y + 1) * width])) {
-				GameObject edge = Instantiate(highGroundPrefabs.highGroundEdgePrefab, new Vector3(x * 2, 2.5f, y * 2), Quaternion.identity);
-				// Maybe rotate the prefab, or make all of them
+				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
+				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 90f, 0f);
 			}
 			if((type == 6 || type == 7 || type == 14 || type == 15) && !highGroundColor.Equals(allPixels[x + 1 + (y - 1) * width])) {
-				GameObject edge = Instantiate(highGroundPrefabs.highGroundEdgePrefab, new Vector3(x * 2, 2.5f, y * 2), Quaternion.identity);
-				// Maybe rotate the prefab, or make all of them
+				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
+				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 180f, 0f);
 			}
 			if((type == 12 || type == 13 || type == 14 || type == 15) && !highGroundColor.Equals(allPixels[x - 1 + (y - 1) * width])) {
-				GameObject edge = Instantiate(highGroundPrefabs.highGroundEdgePrefab, new Vector3(x * 2, 2.5f, y * 2), Quaternion.identity);
-				// Maybe rotate the prefab, or make all of them
+				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
+				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, -90f, 0f);
 			}
 			if((type == 9 || type == 11 || type == 13 || type == 15) && !highGroundColor.Equals(allPixels[x - 1 + (y + 1) * width])) {
-				GameObject edge = Instantiate(highGroundPrefabs.highGroundEdgePrefab, new Vector3(x * 2, 2.5f, y * 2), Quaternion.identity);
-				// Maybe rotate the prefab, or make all of them
+				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
+				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 0f, 0f);
 			}
