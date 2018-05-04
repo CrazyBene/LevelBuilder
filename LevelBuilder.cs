@@ -140,7 +140,7 @@ public class LevelBuilder : MonoBehaviour {
 			}
 			if((type == 9 || type == 11 || type == 13 || type == 15) && (!wallColor.Equals(allPixels[x - 1 + (y + 1) * width]) && !highGroundColor.Equals(allPixels[x - 1 + (y + 1) * width]))) {
 				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
-				go.transform.position = new Vector3(x * 2, 0, y * 2);
+				edge.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 0f, 0f);
 			}
