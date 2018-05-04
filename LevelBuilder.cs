@@ -122,25 +122,25 @@ public class LevelBuilder : MonoBehaviour {
 			// Now we just need to Place the edges
 			if((type == 3 || type == 7 || type == 11 || type == 15) && (!wallColor.Equals(allPixels[x + 1 + (y + 1) * width]) && !highGroundColor.Equals(allPixels[x + 1 + (y + 1) * width]))) {
 				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
-			go.transform.position = new Vector3(x * 2, 0, y * 2);
+				edge.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 90f, 0f);
 			}
 			if((type == 6 || type == 7 || type == 14 || type == 15) && (!wallColor.Equals(allPixels[x + 1 + (y - 1) * width]) && !highGroundColor.Equals(allPixels[x + 1 + (y - 1) * width]))) {
 				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
-			go.transform.position = new Vector3(x * 2, 0, y * 2);
+				edge.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 180f, 0f);
 			}
 			if((type == 12 || type == 13 || type == 14 || type == 15) && (!wallColor.Equals(allPixels[x - 1 + (y - 1) * width]) && !highGroundColor.Equals(allPixels[x - 1 + (y - 1) * width]))) {
 				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
-			go.transform.position = new Vector3(x * 2, 0, y * 2);
+				edge.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, -90f, 0f);
 			}
 			if((type == 9 || type == 11 || type == 13 || type == 15) && (!wallColor.Equals(allPixels[x - 1 + (y + 1) * width]) && !highGroundColor.Equals(allPixels[x - 1 + (y + 1) * width]))) {
 				GameObject edge = PrefabUtility.InstantiatePrefab(wallPrefabs.edgePrefab) as GameObject;
-			go.transform.position = new Vector3(x * 2, 0, y * 2);
+				go.transform.position = new Vector3(x * 2, 0, y * 2);
 				edge.transform.SetParent(transform);
 				edge.transform.Rotate(0f, 0f, 0f);
 			}
@@ -215,27 +215,27 @@ public class LevelBuilder : MonoBehaviour {
 
 			// Now we just need to Place the edges
 			if((type == 3 || type == 7 || type == 11 || type == 15) && !highGroundColor.Equals(allPixels[x + 1 + (y + 1) * width])) {
-				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
-				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
+				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefabs.highGroundEdgePrefab) as GameObject;
 				edge.transform.SetParent(transform);
+				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 				edge.transform.Rotate(0f, 90f, 0f);
 			}
 			if((type == 6 || type == 7 || type == 14 || type == 15) && !highGroundColor.Equals(allPixels[x + 1 + (y - 1) * width])) {
-				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
-				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
+				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefabs.highGroundEdgePrefab) as GameObject;
 				edge.transform.SetParent(transform);
+				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 				edge.transform.Rotate(0f, 180f, 0f);
 			}
 			if((type == 12 || type == 13 || type == 14 || type == 15) && !highGroundColor.Equals(allPixels[x - 1 + (y - 1) * width])) {
-				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
-				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
+				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefabs.highGroundEdgePrefab) as GameObject;
 				edge.transform.SetParent(transform);
+				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 				edge.transform.Rotate(0f, -90f, 0f);
 			}
 			if((type == 9 || type == 11 || type == 13 || type == 15) && !highGroundColor.Equals(allPixels[x - 1 + (y + 1) * width])) {
-				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefab) as GameObject;
-				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
+				GameObject edge = PrefabUtility.InstantiatePrefab(highGroundPrefabs.highGroundEdgePrefab) as GameObject;
 				edge.transform.SetParent(transform);
+				edge.transform.position = new Vector3(x * 2, 2.5f, y * 2);
 				edge.transform.Rotate(0f, 0f, 0f);
 			}
 		}
